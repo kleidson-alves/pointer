@@ -1,0 +1,30 @@
+.paginationContainer {
+  display: flex;
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 1rem;
+
+  button {
+    border: none;
+
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+
+    background-color: var(--black);
+    color: var(--white);
+
+    transition: filter color 0.3s;
+    &:hover {
+      color: var(--yellow);
+      filter: brightness(0.8);
+    }
+
+    & + button {
+      margin-left: 1rem;
+    }
+  }
+}

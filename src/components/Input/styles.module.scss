@@ -1,0 +1,25 @@
+.input {
+  width: 500px;
+
+  background-color: transparent;
+  border: 2px solid var(--stroke);
+
+  font-size: 1.4rem;
+  padding: 1.5rem;
+
+  color: var(--yellow);
+
+  &::placeholder {
+    color: var(--yellow);
+    filter: brightness(0.5);
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid var(--yellow);
+  }
+}
+
+.filled {
+  border: 2px solid var(--yellow);
+}
