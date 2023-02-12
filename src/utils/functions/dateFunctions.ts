@@ -17,3 +17,14 @@ export const formatHour = (date: Date) => {
 
   return `${hours}:${minutes}`;
 };
+
+export const calculateDuration = (start: Date, end: Date) => {
+  const startMinutes = start.getHours() * 60 + start.getMinutes();
+  const endMinutes = end.getHours() * 60 + end.getMinutes();
+
+  const diff = endMinutes - startMinutes;
+  const hours = Math.floor(diff / 60);
+  const minutes = diff % 60;
+
+  return hours > 0 ? `${hours}h${minutes}` : `${minutes}min`;
+};
