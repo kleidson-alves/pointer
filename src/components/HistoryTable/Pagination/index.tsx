@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { createList } from "../../../utils/functions/paginationFunctions";
 
 import styles from "./styles.module.scss";
