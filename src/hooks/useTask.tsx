@@ -22,7 +22,7 @@ interface ICurrentTask {
 interface ITaskContextProps {
   loadTask: () => ICurrentTask | null;
   saveCurrentTask: (taskName: ICurrentTask) => void;
-  saveTask: (task: ITask) => Promise<void>;
+  saveTask: (task: ITask) => void;
   tasks: ITask[];
 }
 
@@ -49,10 +49,21 @@ export const TaskProvider: React.FC<ITaskProviderProps> = ({ children }) => {
     localStorage.setItem("@checkpoint-task", JSON.stringify(task));
   }, []);
 
-  const saveTask = useCallback(async (task: ITask) => {
+  const saveTask = (task: ITask) => {
     localStorage.removeItem("@checkpoint-task");
+    const tasksArray = [task, ...tasks];
 
-    setTasks((s) => [task, ...s]);
+    localStorage.setItem("@checkpoint-tasks", JSON.stringify(tasksArray));
+
+    setTasks(tasksArray);
+  };
+
+  useEffect(() => {
+    const json = localStorage.getItem("@checkpoint-tasks");
+
+    if (json) {
+      setTasks(JSON.parse(json));
+    }
   }, []);
 
   return (
