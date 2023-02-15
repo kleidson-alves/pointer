@@ -21,7 +21,7 @@ interface ICurrentTask {
 
 interface ITaskContextProps {
   loadTask: () => ICurrentTask | null;
-  saveCurrentTask: (taskName: ICurrentTask) => void;
+  saveCurrentTask: (task: ICurrentTask) => void;
   saveTask: (task: ITask) => void;
   tasks: ITask[];
 }

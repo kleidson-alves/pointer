@@ -11,15 +11,22 @@ import {
 
 import styles from "./styles.module.scss";
 
+interface ICurrentTask {
+  name: string;
+  date: Date;
+}
+
 export const Registry: React.FC = () => {
   const [taskName, setTaskName] = useState("");
-  const [isExit, setIsExit] = useState(false);
+  const [currentTask, setCurrentTask] = useState<ICurrentTask | undefined>();
 
   const { loadTask, saveCurrentTask, saveTask } = useTask();
 
   const handleRegisterIncoming = () => {
-    saveCurrentTask({ name: taskName, date: new Date() });
-    setIsExit(true);
+    const current = {name: taskName, date: new Date()}
+
+    setCurrentTask(current)
+    saveCurrentTask(current);
   };
 
   const handleRegisterOutcoming = () => {
@@ -44,20 +51,22 @@ export const Registry: React.FC = () => {
       };
       saveTask(task);
     }
-    setIsExit(false);
+    setCurrentTask(undefined);
   };
 
   useEffect(() => {
     const loadedTask = loadTask();
 
     if (loadedTask) {
-      setIsExit(true);
+      setCurrentTask(loadedTask);
+
+      console.log(loadedTask);
     }
   }, [loadTask]);
 
   return (
     <div className={styles.container}>
-      {!isExit ? (
+      {!currentTask ? (
         <>
           <Input
             placeholder="Ex: Estudo, Academia etc."
@@ -68,7 +77,7 @@ export const Registry: React.FC = () => {
         </>
       ) : (
         <>
-          <Display task={taskName} date={new Date()} />
+          <Display task={currentTask.name} date={new Date(currentTask.date)} />
           <Button onClick={handleRegisterOutcoming} label="registrar saída" />
         </>
       )}
