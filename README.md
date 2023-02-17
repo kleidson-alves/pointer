@@ -8,3 +8,14 @@ A aplicação pointer consiste em fazer o registro de entrada e saída, guardand
 - Sass
 - LocalStorage
 
+## Funcionalidades
+
+1. Registrar início de atividade
+2. Visualizar dados de início de atividade
+3. Registrar finalização de atividade
+4. Ver tabela de histórico de atividades - Data, Atividade, Hora de início, Hora de finalização e Duração 
+
+## Demo
+
+https://user-images.githubusercontent.com/69803742/219686791-562374b4-b41f-4613-911e-da3497b323e8.mp4
+
