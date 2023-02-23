@@ -76,7 +76,7 @@ export const TaskProvider: React.FC<ITaskProviderProps> = ({ children }) => {
     if (json) {
       setTasks(JSON.parse(json));
     }
-  }, []);
+  }, [loadAllTasks]);
 
   return (
     <TaskContext.Provider
