@@ -23,13 +23,13 @@ export const Registry: React.FC = () => {
   const { loadTask, saveCurrentTask, saveTask } = useTask();
 
   const handleRegisterIncoming = () => {
-    const current = {name: taskName, date: new Date()}
+    const current = { name: taskName, date: new Date() };
 
-    setCurrentTask(current)
+    setCurrentTask(current);
     saveCurrentTask(current);
   };
 
-  const handleRegisterOutcoming = () => {
+  const handleRegisterOutcoming = async () => {
     const loadedTask = loadTask();
 
     if (loadedTask) {
@@ -43,13 +43,13 @@ export const Registry: React.FC = () => {
       const duration = calculateDuration(startDate, now);
 
       const task = {
-        name,
         date,
+        name,
         startHour,
         endHour,
         duration,
       };
-      saveTask(task);
+      await saveTask(task);
     }
     setCurrentTask(undefined);
   };

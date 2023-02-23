@@ -23,6 +23,7 @@ export const HistoryTable: React.FC = () => {
 
     return tasks.slice(indexOfFirstElement, indexOfLastElement);
   }, [tasks, currentPage]);
+
   return (
     <>
       <div className={styles.tableContainer}>
